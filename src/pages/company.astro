@@ -1,0 +1,195 @@
+---
+// Company Page - 会社概要ページ
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = '会社概要';
+const pageDescription = 'SKYBLUE EARTH 会社概要。中小企業向けDX支援、AI活用コンサルティングを行っています。';
+
+const companyInfo = [
+  { label: '会社名', value: 'SKYBLUE EARTH' },
+  { label: '代表者', value: '今泉 勇二' },
+  { label: '事業内容', value: '中小企業向けDX支援、AI活用コンサルティング、業務アプリ開発' },
+  { label: '設立', value: '2024年' },
+  { label: '所在地', value: '日本' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header slot="header" currentPath="/company" />
+  
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">COMPANY</span>
+      <h1>会社概要</h1>
+    </div>
+  </section>
+  
+  <!-- Company Info Section -->
+  <section class="section company-section">
+    <div class="container">
+      <div class="company-grid">
+        <div class="company-message card">
+          <h2>ミッション</h2>
+          <blockquote class="mission-quote">
+            <p class="gradient-text">中小企業を加速させろ。</p>
+          </blockquote>
+          <p class="mission-text">
+            日本経済の基盤である中小企業。<br>
+            しかし、人手不足・デジタル化の遅れにより、多くの企業が苦戦しています。<br><br>
+            私たちは「壊さないDX」という考え方で、<br>
+            既存の業務を尊重しながら、少しずつ生産性を高めるお手伝いをします。<br><br>
+            大規模なシステム導入はしません。<br>
+            今あるツールと、最新のAI技術を組み合わせて、<br>
+            <strong>少数精鋭でも勝てる中小企業</strong>を育てます。
+          </p>
+        </div>
+        
+        <div class="company-details card">
+          <h2>会社情報</h2>
+          <dl class="info-list">
+            {companyInfo.map(info => (
+              <>
+                <dt>{info.label}</dt>
+                <dd>{info.value}</dd>
+              </>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card card">
+        <h2>お気軽にご連絡ください</h2>
+        <p>事業に関するご質問・ご相談はこちらから。</p>
+        <a href="/contact" class="btn btn-primary">
+          お問い合わせ
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    background: linear-gradient(to bottom, var(--bg-surface), var(--bg-base));
+  }
+  
+  .page-hero .badge {
+    margin-bottom: var(--space-md);
+  }
+  
+  .page-hero h1 {
+    margin-bottom: var(--space-md);
+  }
+  
+  /* Company Section */
+  .company-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+  
+  .company-message,
+  .company-details {
+    padding: var(--space-2xl);
+  }
+  
+  .company-message h2,
+  .company-details h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  
+  .mission-quote {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .mission-quote p {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .mission-text {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--text-secondary);
+  }
+  
+  .mission-text strong {
+    color: var(--text-primary);
+  }
+  
+  /* Info List */
+  .info-list {
+    display: grid;
+    gap: var(--space-md);
+  }
+  
+  .info-list dt {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .info-list dd {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  
+  .info-list dd:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  /* CTA */
+  .cta-card {
+    text-align: center;
+    padding: var(--space-3xl);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  
+  .cta-card h2 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .cta-card p {
+    max-width: 500px;
+    margin-inline: auto;
+    margin-bottom: var(--space-xl);
+    color: var(--text-secondary);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .company-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

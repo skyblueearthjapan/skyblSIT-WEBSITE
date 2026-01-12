@@ -1,0 +1,388 @@
+---
+// Homepage - サイトのエントリーポイント
+// 事業思想の提示と主要カテゴリへのハブ
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = '中小企業を加速させろ';
+const pageDescription = 'AIと既存のデジタルツールを活用し、中小企業の業務効率と生産性を高め、少数精鋭でも強く勝ち抜ける中小企業を育てるDX支援事業。壊さないDXで、現場から始めるAI活用をサポートします。';
+
+const services = [
+  {
+    icon: '📊',
+    title: 'Google Workspace活用',
+    description: 'スプレッドシートによる業務データ化で、特別なシステムなしに情報を一元管理。',
+    link: '/method#google-workspace'
+  },
+  {
+    icon: '📱',
+    title: 'AppSheet開発',
+    description: 'ノーコードで現場向け業務アプリを高速構築。導入負担を最小限に。',
+    link: '/method#appsheet'
+  },
+  {
+    icon: '📈',
+    title: 'Looker Studio可視化',
+    description: '経営データをリアルタイムで見える化。判断のスピードを上げる。',
+    link: '/method#looker-studio'
+  },
+  {
+    icon: '🤖',
+    title: '生成AI活用',
+    description: '業務支援・自動化・判断補助。現場の「面倒」を減らすAI導入。',
+    link: '/method#ai'
+  },
+];
+
+const values = [
+  {
+    number: '01',
+    title: '既存業務を否定しない',
+    description: '今のやり方には理由がある。それを尊重しながら、少しずつ効率化を図ります。'
+  },
+  {
+    number: '02',
+    title: '大規模な入れ替えは行わない',
+    description: '高額なシステム導入は提案しません。今あるツールを活かす方法を探します。'
+  },
+  {
+    number: '03',
+    title: '小さく作り、早く回す',
+    description: '完璧を目指さず、まず動くものを。フィードバックを得て改善し続けます。'
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header slot="header" currentPath="/" />
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-badge animate-fade-in-up">
+        <span class="badge">中小企業DX支援</span>
+      </div>
+      
+      <h1 class="hero-title animate-fade-in-up" style="animation-delay: 0.1s;">
+        <span class="gradient-text">中小企業</span>を<br>
+        加速させろ。
+      </h1>
+      
+      <p class="hero-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+        大規模システムは要らない。難しい技術も要らない。<br>
+        <strong>今あるツール</strong>と<strong>AI</strong>で、現場の生産性を上げる。<br>
+        それが私たちの「壊さないDX」です。
+      </p>
+      
+      <div class="hero-cta animate-fade-in-up" style="animation-delay: 0.3s;">
+        <a href="/contact" class="btn btn-primary">
+          無料相談を申し込む
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="/business" class="btn btn-secondary">
+          事業内容を見る
+        </a>
+      </div>
+    </div>
+    
+    <!-- Decorative Elements -->
+    <div class="hero-decoration">
+      <div class="orb orb-1 animate-float"></div>
+      <div class="orb orb-2 animate-float" style="animation-delay: -2s;"></div>
+      <div class="orb orb-3 animate-float" style="animation-delay: -4s;"></div>
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="section services-section">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-label badge">WHAT WE DO</span>
+        <h2>私たちの<span class="gradient-text">手法</span></h2>
+        <p>特別なシステムではなく、"使い慣れたツール"を最大限に活かす。</p>
+      </header>
+      
+      <div class="services-grid stagger">
+        {services.map(service => (
+          <a href={service.link} class="card service-card">
+            <span class="service-icon">{service.icon}</span>
+            <h3 class="service-title">{service.title}</h3>
+            <p class="service-desc">{service.description}</p>
+            <span class="card-arrow">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Values Section -->
+  <section class="section values-section">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-label badge">OUR PHILOSOPHY</span>
+        <h2>壊さない<span class="gradient-text">DX</span>とは</h2>
+        <p>変革は、現場の味方でなければならない。</p>
+      </header>
+      
+      <div class="values-grid stagger">
+        {values.map(value => (
+          <div class="value-item">
+            <span class="value-number">{value.number}</span>
+            <h3 class="value-title">{value.title}</h3>
+            <p class="value-desc">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card card">
+        <h2>まずは、お話をお聞かせください</h2>
+        <p>「こんなこと、できるだろうか？」その疑問から始めましょう。<br>現場の課題を一緒に整理するところからサポートします。</p>
+        <a href="/contact" class="btn btn-primary">
+          無料相談を申し込む
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px; /* Header height offset */
+    overflow: hidden;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding-block: var(--space-3xl);
+  }
+  
+  .hero-badge {
+    margin-bottom: var(--space-lg);
+  }
+  
+  .hero-title {
+    margin-bottom: var(--space-lg);
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-inline: auto;
+    margin-bottom: var(--space-2xl);
+    line-height: 1.9;
+  }
+  
+  .hero-subtitle strong {
+    color: var(--text-primary);
+  }
+  
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+  
+  /* Hero Decoration */
+  .hero-decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+  }
+  
+  .orb-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-primary);
+    top: 10%;
+    left: -10%;
+  }
+  
+  .orb-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--color-accent);
+    bottom: 20%;
+    right: -5%;
+  }
+  
+  .orb-3 {
+    width: 200px;
+    height: 200px;
+    background: var(--color-primary-light);
+    top: 50%;
+    left: 40%;
+  }
+  
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+  
+  .section-label {
+    margin-bottom: var(--space-md);
+    display: inline-block;
+  }
+  
+  .section-header h2 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .section-header p {
+    color: var(--text-muted);
+    max-width: 500px;
+    margin-inline: auto;
+  }
+  
+  /* Services Section */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-lg);
+  }
+  
+  .service-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  
+  .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+  }
+  
+  .service-title {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-sm);
+    color: var(--text-primary);
+  }
+  
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    flex-grow: 1;
+  }
+  
+  .card-arrow {
+    position: absolute;
+    bottom: var(--space-xl);
+    right: var(--space-xl);
+    font-size: 1.25rem;
+    color: var(--color-primary-light);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all var(--transition-base);
+  }
+  
+  .service-card:hover .card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Values Section */
+  .values-section {
+    background: var(--bg-surface);
+  }
+  
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+  }
+  
+  .value-item {
+    padding: var(--space-xl);
+    border-left: 2px solid var(--color-primary);
+  }
+  
+  .value-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    opacity: 0.3;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .value-title {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .value-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  
+  /* CTA Section */
+  .cta-section {
+    padding-bottom: var(--space-3xl);
+  }
+  
+  .cta-card {
+    text-align: center;
+    padding: var(--space-3xl);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  
+  .cta-card h2 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .cta-card p {
+    max-width: 500px;
+    margin-inline: auto;
+    margin-bottom: var(--space-xl);
+    color: var(--text-secondary);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+    
+    .orb {
+      opacity: 0.2;
+    }
+  }
+</style>

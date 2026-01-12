@@ -1,0 +1,186 @@
+---
+// Privacy Policy Page - プライバシーポリシーページ
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = 'プライバシーポリシー';
+const pageDescription = 'SKYBLUE EARTH プライバシーポリシー。個人情報の取り扱いについて説明します。';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header slot="header" currentPath="/privacy" />
+  
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">PRIVACY POLICY</span>
+      <h1>プライバシーポリシー</h1>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <section class="section policy-section">
+    <div class="container">
+      <article class="policy-content card">
+        <section class="policy-block">
+          <h2>1. 基本方針</h2>
+          <p>
+            SKYBLUE EARTH（以下「当社」）は、お客様の個人情報の保護を重要な責務と考え、
+            以下の方針に基づき個人情報の適正な取扱いと保護に努めます。
+          </p>
+        </section>
+        
+        <section class="policy-block">
+          <h2>2. 個人情報の定義</h2>
+          <p>
+            本プライバシーポリシーにおいて「個人情報」とは、
+            生存する個人に関する情報であって、氏名、生年月日、住所、電話番号、
+            メールアドレスその他の記述等により特定の個人を識別できるものをいいます。
+          </p>
+        </section>
+        
+        <section class="policy-block">
+          <h2>3. 個人情報の収集</h2>
+          <p>
+            当社は、お問い合わせフォーム等を通じて、氏名、メールアドレス、
+            電話番号、会社名などの個人情報を収集することがあります。
+            収集にあたっては、利用目的を明示し、適法かつ公正な手段により行います。
+          </p>
+        </section>
+        
+        <section class="policy-block">
+          <h2>4. 個人情報の利用目的</h2>
+          <p>お客様からお預かりした個人情報は、以下の目的で利用いたします。</p>
+          <ul>
+            <li>お問い合わせ・ご相談への対応</li>
+            <li>サービスのご提供・ご案内</li>
+            <li>契約履行に必要な連絡</li>
+            <li>サービス改善のための分析</li>
+          </ul>
+        </section>
+        
+        <section class="policy-block">
+          <h2>5. 個人情報の第三者提供</h2>
+          <p>
+            当社は、法令に基づく場合を除き、お客様の同意を得ることなく
+            個人情報を第三者に提供することはありません。
+          </p>
+        </section>
+        
+        <section class="policy-block">
+          <h2>6. 個人情報の管理</h2>
+          <p>
+            当社は、個人情報の漏洩、滅失、き損の防止その他個人情報の安全管理のために、
+            必要かつ適切なセキュリティ対策を講じます。
+          </p>
+        </section>
+        
+        <section class="policy-block">
+          <h2>7. Cookieについて</h2>
+          <p>
+            当サイトでは、利便性向上やアクセス解析のためにCookieを使用する場合があります。
+            Cookieはブラウザの設定により無効化することが可能です。
+          </p>
+        </section>
+        
+        <section class="policy-block">
+          <h2>8. お問い合わせ</h2>
+          <p>
+            本ポリシーに関するお問い合わせは、
+            <a href="/contact">お問い合わせページ</a>よりご連絡ください。
+          </p>
+        </section>
+        
+        <section class="policy-block">
+          <h2>9. 改定</h2>
+          <p>
+            本プライバシーポリシーは、法令の改正や当社の方針変更等により、
+            予告なく改定されることがあります。改定後の内容は本ページにて公開いたします。
+          </p>
+        </section>
+        
+        <footer class="policy-footer">
+          <p>制定日：2024年1月1日</p>
+          <p>SKYBLUE EARTH</p>
+        </footer>
+      </article>
+    </div>
+  </section>
+  
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    background: linear-gradient(to bottom, var(--bg-surface), var(--bg-base));
+  }
+  
+  .page-hero .badge {
+    margin-bottom: var(--space-md);
+  }
+  
+  .page-hero h1 {
+    margin-bottom: var(--space-md);
+  }
+  
+  /* Policy Content */
+  .policy-content {
+    padding: var(--space-2xl);
+    max-width: 800px;
+    margin-inline: auto;
+  }
+  
+  .policy-block {
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .policy-block:last-of-type {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .policy-block h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-md);
+    color: var(--text-primary);
+  }
+  
+  .policy-block p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+  
+  .policy-block ul {
+    list-style: disc;
+    padding-left: var(--space-xl);
+    color: var(--text-secondary);
+  }
+  
+  .policy-block li {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .policy-block a {
+    color: var(--color-primary-light);
+  }
+  
+  .policy-footer {
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--glass-border);
+    text-align: right;
+  }
+  
+  .policy-footer p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+</style>

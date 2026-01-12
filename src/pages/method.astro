@@ -1,0 +1,360 @@
+---
+// Method Page - 手法・技術ページ
+// 使用ツール・考え方の解説
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = '手法・技術';
+const pageDescription = 'Google Workspace、AppSheet、Looker Studio、生成AIを活用した中小企業向けDX支援の手法・技術を紹介します。';
+
+const tools = [
+  {
+    id: 'google-workspace',
+    icon: '📊',
+    name: 'Google Workspace',
+    tagline: '既存の環境を最大限活かす',
+    description: 'Gmail、Googleドライブ、スプレッドシートなど、多くの企業で既に使われているツールを活用。新しいシステムを導入せず、今あるツールの使い方を変えるだけで業務効率を改善します。',
+    benefits: [
+      '追加コストがほぼ不要',
+      '操作を覚える負担が少ない',
+      'モバイルでもアクセス可能',
+    ],
+  },
+  {
+    id: 'appsheet',
+    icon: '📱',
+    name: 'AppSheet',
+    tagline: '現場が必要なアプリを、爆速で',
+    description: 'Googleが提供するノーコード開発プラットフォーム。スプレッドシートをベースに、在庫管理・日報・点検記録など、現場向けの業務アプリを素早く構築できます。',
+    benefits: [
+      'プログラミング不要',
+      'スマホ・タブレット対応',
+      '1〜2週間でプロトタイプ完成',
+    ],
+  },
+  {
+    id: 'looker-studio',
+    icon: '📈',
+    name: 'Looker Studio',
+    tagline: '勘と経験を、データによる確信へ',
+    description: '散らばったデータを一箇所に集め、リアルタイムで可視化。売上推移、業務進捗、KPIなど、経営判断に必要な情報をダッシュボード化します。',
+    benefits: [
+      '無料で利用可能',
+      'スプレッドシートと連携',
+      'リアルタイム更新',
+    ],
+  },
+  {
+    id: 'ai',
+    icon: '🤖',
+    name: '生成AI活用',
+    tagline: '最新AIを、現場の相棒に',
+    description: 'ChatGPT、Gemini、Claudeなどの生成AIを業務に組み込み、文書作成、データ整理、問い合わせ対応、判断補助などを自動化・効率化します。',
+    benefits: [
+      '定型業務の時間を削減',
+      '文章作成・要約の効率化',
+      '24時間対応の問い合わせ窓口',
+    ],
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header slot="header" currentPath="/method" />
+  
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">METHOD</span>
+      <h1>手法・技術</h1>
+      <p class="page-subtitle">
+        特別なシステムは使いません。<br>
+        "使い慣れたツール"を最大限に活かす、それが私たちのやり方です。
+      </p>
+    </div>
+  </section>
+  
+  <!-- Tools Section -->
+  <section class="section tools-section">
+    <div class="container">
+      {tools.map((tool, index) => (
+        <article class="tool-block" id={tool.id}>
+          <div class={`tool-content ${index % 2 === 1 ? 'reverse' : ''}`}>
+            <div class="tool-text">
+              <span class="tool-icon">{tool.icon}</span>
+              <h2>{tool.name}</h2>
+              <p class="tool-tagline">{tool.tagline}</p>
+              <p class="tool-description">{tool.description}</p>
+              
+              <div class="tool-benefits">
+                <h4>こんなメリットが</h4>
+                <ul>
+                  {tool.benefits.map(benefit => (
+                    <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            
+            <div class="tool-visual card">
+              <div class="visual-placeholder">
+                <span class="big-icon">{tool.icon}</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  
+  <!-- Approach Section -->
+  <section class="section approach-section">
+    <div class="container">
+      <header class="section-header">
+        <span class="badge">APPROACH</span>
+        <h2>私たちの<span class="gradient-text">アプローチ</span></h2>
+      </header>
+      
+      <div class="approach-grid stagger">
+        <div class="approach-card card">
+          <span class="approach-number">01</span>
+          <h3>小さく始める</h3>
+          <p>一気に変えようとせず、まずは一つの業務から。成功体験を積み重ねます。</p>
+        </div>
+        <div class="approach-card card">
+          <span class="approach-number">02</span>
+          <h3>早く見せる</h3>
+          <p>1〜2週間で動くものをお見せします。実際に触って確認できます。</p>
+        </div>
+        <div class="approach-card card">
+          <span class="approach-number">03</span>
+          <h3>一緒に育てる</h3>
+          <p>作って終わりではありません。フィードバックを元に改善し続けます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card card">
+        <h2>どのツールが合うか、一緒に考えましょう</h2>
+        <p>現場の課題をお聞かせください。最適な組み合わせをご提案します。</p>
+        <a href="/contact" class="btn btn-primary">
+          無料相談を申し込む
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    background: linear-gradient(to bottom, var(--bg-surface), var(--bg-base));
+  }
+  
+  .page-hero .badge {
+    margin-bottom: var(--space-md);
+  }
+  
+  .page-hero h1 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+  
+  /* Tools Section */
+  .tool-block {
+    padding: var(--space-3xl) 0;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  
+  .tool-block:last-of-type {
+    border-bottom: none;
+  }
+  
+  .tool-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+  
+  .tool-content.reverse {
+    direction: rtl;
+  }
+  
+  .tool-content.reverse > * {
+    direction: ltr;
+  }
+  
+  .tool-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--space-md);
+  }
+  
+  .tool-text h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .tool-tagline {
+    font-size: 1.1rem;
+    color: var(--color-primary-light);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .tool-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+  
+  .tool-benefits h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-md);
+  }
+  
+  .tool-benefits ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  .tool-benefits li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+  
+  .tool-benefits svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+  
+  /* Tool Visual */
+  .tool-visual {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.05));
+  }
+  
+  .big-icon {
+    font-size: 8rem;
+    opacity: 0.3;
+  }
+  
+  /* Approach Section */
+  .approach-section {
+    background: var(--bg-surface);
+  }
+  
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+  }
+  
+  .approach-card {
+    text-align: center;
+    padding: var(--space-2xl);
+  }
+  
+  .approach-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    opacity: 0.3;
+    margin-bottom: var(--space-md);
+  }
+  
+  .approach-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .approach-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+  
+  .section-header .badge {
+    margin-bottom: var(--space-md);
+    display: inline-block;
+  }
+  
+  .section-header h2 {
+    margin-bottom: var(--space-md);
+  }
+  
+  /* CTA */
+  .cta-card {
+    text-align: center;
+    padding: var(--space-3xl);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  
+  .cta-card h2 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .cta-card p {
+    max-width: 500px;
+    margin-inline: auto;
+    margin-bottom: var(--space-xl);
+    color: var(--text-secondary);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .tool-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .tool-content.reverse {
+      direction: ltr;
+    }
+    
+    .tool-visual {
+      order: -1;
+      aspect-ratio: 16 / 9;
+    }
+  }
+</style>

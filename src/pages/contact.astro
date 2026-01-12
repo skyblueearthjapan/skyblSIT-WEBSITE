@@ -1,0 +1,368 @@
+---
+// Contact Page - お問い合わせページ
+// シンプルなコンタクトフォーム
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = 'お問い合わせ';
+const pageDescription = '無料相談・お問い合わせはこちら。中小企業のDX支援、AI活用、業務効率化についてお気軽にご相談ください。';
+
+const contactMethods = [
+  {
+    icon: '📧',
+    title: 'メール',
+    value: 'info@skyblue-earth.jp',
+    href: 'mailto:info@skyblue-earth.jp'
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header slot="header" currentPath="/contact" />
+  
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">CONTACT</span>
+      <h1>お問い合わせ</h1>
+      <p class="page-subtitle">
+        「こんなこと、できるだろうか？」<br>
+        その疑問から、お気軽にご連絡ください。
+      </p>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Form -->
+        <div class="contact-form-wrapper card">
+          <h2>無料相談フォーム</h2>
+          <p class="form-intro">
+            下記フォームにご記入ください。<br>
+            通常2営業日以内にご返信いたします。
+          </p>
+          
+          <form class="contact-form" action="#" method="POST" id="contact-form">
+            <div class="form-group">
+              <label for="company">会社名</label>
+              <input type="text" id="company" name="company" placeholder="株式会社〇〇">
+            </div>
+            
+            <div class="form-group">
+              <label for="name">お名前 <span class="required">*</span></label>
+              <input type="text" id="name" name="name" required placeholder="山田 太郎">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">メールアドレス <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="example@company.co.jp">
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">電話番号</label>
+              <input type="tel" id="phone" name="phone" placeholder="03-1234-5678">
+            </div>
+            
+            <div class="form-group">
+              <label for="interest">ご興味のある領域</label>
+              <select id="interest" name="interest">
+                <option value="">選択してください</option>
+                <option value="google-workspace">Google Workspace活用</option>
+                <option value="appsheet">AppSheet開発</option>
+                <option value="looker-studio">Looker Studio可視化</option>
+                <option value="ai">生成AI活用</option>
+                <option value="other">その他</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">ご相談内容 <span class="required">*</span></label>
+              <textarea id="message" name="message" rows="5" required placeholder="現在の課題やご要望をお聞かせください"></textarea>
+            </div>
+            
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="privacy" name="privacy" required>
+                <span class="checkmark"></span>
+                <a href="/privacy" target="_blank">プライバシーポリシー</a>に同意する
+              </label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary submit-btn">
+              送信する
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+        
+        <!-- Contact Info -->
+        <aside class="contact-info">
+          <div class="info-card card">
+            <h3>その他のお問い合わせ方法</h3>
+            <div class="contact-methods">
+              {contactMethods.map(method => (
+                <a href={method.href} class="contact-method">
+                  <span class="method-icon">{method.icon}</span>
+                  <div>
+                    <span class="method-title">{method.title}</span>
+                    <span class="method-value">{method.value}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          <div class="info-card card">
+            <h3>よくあるご質問</h3>
+            <ul class="faq-list">
+              <li>
+                <strong>費用はどのくらいかかりますか？</strong>
+                <p>規模や内容により異なります。まずはヒアリング後に概算をお伝えします。</p>
+              </li>
+              <li>
+                <strong>どのくらいの期間がかかりますか？</strong>
+                <p>小規模なものは1〜2週間、中規模で1〜2ヶ月が目安です。</p>
+              </li>
+              <li>
+                <strong>遠方でも対応可能ですか？</strong>
+                <p>はい、オンラインでの対応が可能です。</p>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    background: linear-gradient(to bottom, var(--bg-surface), var(--bg-base));
+  }
+  
+  .page-hero .badge {
+    margin-bottom: var(--space-md);
+  }
+  
+  .page-hero h1 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+  
+  /* Contact Section */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+  
+  /* Form */
+  .contact-form-wrapper {
+    padding: var(--space-2xl);
+  }
+  
+  .contact-form-wrapper h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .form-intro {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-xl);
+  }
+  
+  .form-group {
+    margin-bottom: var(--space-lg);
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .required {
+    color: #EF4444;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: var(--space-md);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: var(--bg-base);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+  
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-muted);
+  }
+  
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-md) center;
+    padding-right: 40px;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  /* Checkbox */
+  .checkbox-group {
+    margin-top: var(--space-xl);
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+  }
+  
+  .checkbox-label a {
+    color: var(--color-primary-light);
+  }
+  
+  .submit-btn {
+    width: 100%;
+    margin-top: var(--space-md);
+    padding: var(--space-md) var(--space-xl);
+  }
+  
+  /* Contact Info */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  
+  .info-card {
+    padding: var(--space-xl);
+  }
+  
+  .info-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--bg-base);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background var(--transition-fast);
+  }
+  
+  .contact-method:hover {
+    background: var(--bg-elevated);
+  }
+  
+  .method-icon {
+    font-size: 1.5rem;
+  }
+  
+  .method-title {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  
+  .method-value {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+  
+  /* FAQ */
+  .faq-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  
+  .faq-list strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .faq-list p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  
+  /* Responsive */
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    
+    .info-card {
+      flex: 1 1 280px;
+    }
+  }
+</style>

@@ -1,0 +1,394 @@
+---
+// Business Page - 事業紹介ページ
+// 提供価値の整理、課題→解決の流れ、他社との差別化
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = '事業紹介';
+const pageDescription = '中小企業のDX支援事業。Google Workspace、AppSheet、Looker Studio、生成AIを活用し、現場負担を最小限に抑えた業務効率化を実現します。';
+
+const challenges = [
+  {
+    pain: 'システム導入が難しい',
+    solution: '今使っているツールを活かす。新しく覚えることを最小限に。'
+  },
+  {
+    pain: '高額なIT投資ができない',
+    solution: 'Google Workspaceなど低コストツールで十分な効果を。'
+  },
+  {
+    pain: '現場のやり方を変えられない',
+    solution: '大きく変えず、小さな改善を積み重ねる。'
+  },
+  {
+    pain: '属人化・手作業が多い',
+    solution: '自動化・可視化で誰でもできる仕組みに。'
+  },
+];
+
+const differentiators = [
+  {
+    icon: '🎯',
+    title: '現場起点',
+    description: '経営者の理想だけでなく、実際に使う人の視点から設計します。'
+  },
+  {
+    icon: '💰',
+    title: '低コスト',
+    description: '大規模システムは不要。既存ツール活用でコストを抑制。'
+  },
+  {
+    icon: '⚡',
+    title: '高速',
+    description: '小さく作って早く試す。1週間で動くものをお見せします。'
+  },
+  {
+    icon: '🤝',
+    title: '伴走型',
+    description: '作って終わりではなく、定着・改善まで一緒に走ります。'
+  },
+];
+
+const process = [
+  { step: '01', title: 'ヒアリング', desc: '現場の課題を丁寧に聞き取ります。' },
+  { step: '02', title: '提案', desc: '最適なツールと進め方をご提案。' },
+  { step: '03', title: '開発', desc: '小さく作り、すぐにお見せします。' },
+  { step: '04', title: '導入', desc: '現場への定着をサポート。' },
+  { step: '05', title: '改善', desc: 'フィードバックを元に継続改善。' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header slot="header" currentPath="/business" />
+  
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">BUSINESS</span>
+      <h1>事業紹介</h1>
+      <p class="page-subtitle">
+        中小企業が抱える「デジタル化の壁」を、<br>
+        壊さずに乗り越えるお手伝いをします。
+      </p>
+    </div>
+  </section>
+  
+  <!-- Mission Statement -->
+  <section class="section mission-section">
+    <div class="container">
+      <div class="mission-card card">
+        <h2 class="mission-title">
+          <span class="gradient-text">少数精鋭</span>でも勝てる<br>
+          中小企業を育てる
+        </h2>
+        <p class="mission-text">
+          日本には約400万社の中小企業があります。<br>
+          人口減少・人手不足の中、生き残りの鍵は<br>
+          <strong>「人を増やさずに生産性を上げること」</strong>。<br>
+          私たちは、AIと既存ツールを活用したDX支援で、<br>
+          その実現をサポートします。
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Pain → Solution -->
+  <section class="section challenges-section">
+    <div class="container">
+      <header class="section-header">
+        <span class="badge">CHALLENGES</span>
+        <h2>中小企業が直面する<span class="gradient-text">課題</span></h2>
+        <p>私たちはこれらの課題に、「壊さないDX」で応えます。</p>
+      </header>
+      
+      <div class="challenges-grid stagger">
+        {challenges.map(item => (
+          <div class="challenge-card card">
+            <div class="pain">
+              <span class="pain-label">😓 課題</span>
+              <p class="pain-text">{item.pain}</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="solution">
+              <span class="solution-label">✨ 解決</span>
+              <p class="solution-text">{item.solution}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Differentiators -->
+  <section class="section diff-section">
+    <div class="container">
+      <header class="section-header">
+        <span class="badge">WHY US</span>
+        <h2>私たちの<span class="gradient-text">強み</span></h2>
+      </header>
+      
+      <div class="diff-grid stagger">
+        {differentiators.map(item => (
+          <div class="diff-card card">
+            <span class="diff-icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Process -->
+  <section class="section process-section">
+    <div class="container">
+      <header class="section-header">
+        <span class="badge">PROCESS</span>
+        <h2>支援の<span class="gradient-text">流れ</span></h2>
+      </header>
+      
+      <div class="process-timeline">
+        {process.map((item, index) => (
+          <div class="process-step">
+            <span class="step-number">{item.step}</span>
+            <div class="step-content">
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </div>
+            {index < process.length - 1 && <div class="step-line"></div>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card card">
+        <h2>まずはお気軽にご相談ください</h2>
+        <p>「うちでも使えるだろうか？」その疑問から始めましょう。</p>
+        <a href="/contact" class="btn btn-primary">
+          無料相談を申し込む
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    background: linear-gradient(to bottom, var(--bg-surface), var(--bg-base));
+  }
+  
+  .page-hero .badge {
+    margin-bottom: var(--space-md);
+  }
+  
+  .page-hero h1 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+  
+  /* Mission Section */
+  .mission-card {
+    text-align: center;
+    padding: var(--space-3xl);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.05));
+  }
+  
+  .mission-title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: var(--space-xl);
+    line-height: 1.4;
+  }
+  
+  .mission-text {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--text-secondary);
+  }
+  
+  .mission-text strong {
+    color: var(--text-primary);
+  }
+  
+  /* Challenges Section */
+  .challenges-section {
+    background: var(--bg-surface);
+  }
+  
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+  }
+  
+  .challenge-card {
+    display: grid;
+    gap: var(--space-md);
+  }
+  
+  .pain, .solution {
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+  }
+  
+  .pain {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+  
+  .solution {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+  
+  .pain-label, .solution-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    opacity: 0.8;
+  }
+  
+  .pain-text, .solution-text {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  
+  .arrow {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+  }
+  
+  /* Differentiators Section */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-lg);
+  }
+  
+  .diff-card {
+    text-align: center;
+  }
+  
+  .diff-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--space-md);
+  }
+  
+  .diff-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .diff-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  
+  /* Process Section */
+  .process-section {
+    background: var(--bg-surface);
+  }
+  
+  .process-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 600px;
+    margin-inline: auto;
+  }
+  
+  .process-step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    position: relative;
+  }
+  
+  .step-number {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: var(--radius-full);
+  }
+  
+  .step-content h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .step-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  
+  /* CTA Section (same as homepage) */
+  .cta-card {
+    text-align: center;
+    padding: var(--space-3xl);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  
+  .cta-card h2 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .cta-card p {
+    max-width: 500px;
+    margin-inline: auto;
+    margin-bottom: var(--space-xl);
+    color: var(--text-secondary);
+  }
+  
+  /* Section Header (from index.astro) */
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+  
+  .section-header .badge {
+    margin-bottom: var(--space-md);
+    display: inline-block;
+  }
+  
+  .section-header h2 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .section-header p {
+    color: var(--text-muted);
+    max-width: 500px;
+    margin-inline: auto;
+  }
+</style>

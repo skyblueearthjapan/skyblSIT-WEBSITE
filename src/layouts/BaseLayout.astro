@@ -1,0 +1,114 @@
+---
+// BaseLayout - 全ページ共通のレイアウト
+// SEOとパフォーマンスを最適化した基盤テンプレート
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  pubDate?: Date;
+  author?: string;
+}
+
+const {
+  title,
+  description,
+  image = '/og-default.png',
+  type = 'website',
+  pubDate,
+  author
+} = Astro.props;
+
+const siteName = 'SKYBLUE EARTH';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://skyblue-earth.jp');
+const fullTitle = `${title} | ${siteName}`;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>{fullTitle}</title>
+  <meta name="title" content={fullTitle}>
+  <meta name="description" content={description}>
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href={canonicalURL}>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Fonts (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={type}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={new URL(image, Astro.site || 'https://skyblue-earth.jp')}>
+  <meta property="og:site_name" content={siteName}>
+  <meta property="og:locale" content="ja_JP">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content={canonicalURL}>
+  <meta name="twitter:title" content={fullTitle}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={new URL(image, Astro.site || 'https://skyblue-earth.jp')}>
+  
+  <!-- JSON-LD Structured Data -->
+  {type === 'article' && pubDate && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "image": [new URL(image, Astro.site || 'https://skyblue-earth.jp').toString()],
+      "datePublished": pubDate.toISOString(),
+      "author": {
+        "@type": "Person",
+        "name": author || "SKYBLUE EARTH"
+      }
+    })} />
+  )}
+  
+  <!-- Global Styles -->
+  <style is:global>
+    @import '../styles/global.css';
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+  
+  <slot name="header" />
+  
+  <main id="main-content">
+    <slot />
+  </main>
+  
+  <slot name="footer" />
+</body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--space-md);
+    z-index: 9999;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-sm);
+    transition: top var(--transition-fast);
+  }
+  
+  .skip-link:focus {
+    top: var(--space-md);
+  }
+</style>
